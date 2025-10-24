@@ -1,0 +1,25 @@
+# Site settings
+title: "Lost in Phonation: A Benchmark for Voice Quality in Speech Synthesis"
+description: "A comprehensive benchmark for evaluating voice quality in modern speech synthesis systems"
+theme: minima
+baseurl: ""
+url: "https://shreeharsha-bs.github.io/Lost-in-phonation"
+
+# Author information
+author:
+  name: "Research Team"
+  email: "contact@example.com"
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

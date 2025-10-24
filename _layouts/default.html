@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    <!-- Custom JavaScript for audio handling -->
+    <script>
+      // Ensure audio players are properly loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        const audioElements = document.querySelectorAll('audio');
+        audioElements.forEach(function(audio) {
+          audio.addEventListener('loadedmetadata', function() {
+            console.log('Audio loaded successfully');
+          });
+          audio.addEventListener('error', function(e) {
+            console.error('Audio load error:', e);
+            // If audio fails to load, show a message
+            const errorMsg = document.createElement('p');
+            errorMsg.innerHTML = '<strong>Audio loading failed. Please check if the audio file exists.</strong>';
+            errorMsg.style.color = 'red';
+            errorMsg.style.textAlign = 'center';
+            errorMsg.style.fontSize = '0.9em';
+            audio.parentNode.insertBefore(errorMsg, audio.nextSibling);
+          });
+        });
+
+        // Add play/pause functionality for all audio players
+        const playButtons = document.querySelectorAll('.play-btn');
+        playButtons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            const audioId = this.getAttribute('data-audio');
+            const audio = document.getElementById(audioId);
+            if (audio.paused) {
+              audio.play();
+              this.textContent = '⏸️ Pause';
+            } else {
+              audio.pause();
+              this.textContent = '▶️ Play';
+            }
+          });
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

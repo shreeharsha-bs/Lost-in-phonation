@@ -1,0 +1,32 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby
+Gemfile.lock
+.bundle/
+vendor/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Audio files (temporary - remove this line when you add real audio)
+assets/audio/*.wav
+assets/audio/*.mp3
+!assets/audio/README.md
