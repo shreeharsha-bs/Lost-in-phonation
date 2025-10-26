@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost in Phonation - Voice Quality Benchmark</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3.5em;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        h2 {
+            color: #ff6b6b;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 50px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #ee5a24;
+        }
+
+        h3 {
+            color: #ff6b6b;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin: 20px 0 15px 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #f0f0f0;
+            margin: 40px 0;
+        }
+
+        .abstract {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            padding: 35px 40px;
+            border-left: 6px solid #ff6b6b;
+            border-radius: 10px;
+            font-size: 1.15em;
+            line-height: 1.8;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.1);
+        }
+
+        .abstract em {
+            color: #888;
+            font-style: italic;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #666;
+            font-size: 1.15em;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .audio-grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .audio-example {
+            background: linear-gradient(135deg, #fffaf8 0%, #fff5f2 100%);
+            border: 3px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .audio-example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.25);
+            border-color: #ee5a24;
+        }
+
+        .audio-example h3 {
+            text-align: center;
+            margin: 0 0 30px 0;
+            font-size: 1.6em;
+            color: #ff6b6b;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffe8e8;
+        }
+
+        .audio-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .audio-item {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .audio-item:hover {
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.15);
+        }
+
+        .audio-label {
+            font-weight: 700;
+            color: #ee5a24;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .audio-pair {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .audio-example {
+                padding: 25px 20px;
+            }
+
+            .abstract {
+                padding: 25px 20px;
+                font-size: 1.05em;
+            }
+
+            body {
+                padding: 20px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .audio-example h3 {
+                font-size: 1.2em;
+            }
+
+            .audio-label {
+                font-size: 1em;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lost in Phonation</h1>
+        
+        <div class="subtitle">
+            Voice Quality Benchmark for TTS Evaluation (LREC 2026)
+        </div>
+
+        <hr>
+
+        <h2>Abstract</h2>
+        
+        <div class="abstract">
+            <em>[Abstract will be added here once finalized for LREC 2026 submission]</em>
+        </div>
+
+        <hr>
+
+        <h2>🎧 Audio Examples</h2>
+        
+        <p class="section-description">Comparing input prompts with TTS model outputs across different voice qualities</p>
+
+        <div class="audio-grid">
+            <div class="audio-example">
+                <h3>Modal Voice - Career Advice</h3>
+                <div class="audio-pair">
+                    <div class="audio-item">
+                        <span class="audio-label">Input Prompt</span>
+                        <audio controls>
+                            <source src="assets/audio/1_s01_career_advice_modal.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-item">
+                        <span class="audio-label">OpenAI TTS Output</span>
+                        <audio controls>
+                            <source src="assets/audio/LFM_responses/openai_output_modal.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="audio-example">
+                <h3>Breathy Voice - Career Advice</h3>
+                <div class="audio-pair">
+                    <div class="audio-item">
+                        <span class="audio-label">Input Prompt</span>
+                        <audio controls>
+                            <source src="assets/audio/1_s01_career_advice_breathy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-item">
+                        <span class="audio-label">OpenAI TTS Output</span>
+                        <audio controls>
+                            <source src="assets/audio/LFM_responses/openai_output_breathy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="audio-example">
+                <h3>Creaky Voice - Career Advice</h3>
+                <div class="audio-pair">
+                    <div class="audio-item">
+                        <span class="audio-label">Input Prompt</span>
+                        <audio controls>
+                            <source src="assets/audio/1_s01_career_advice_creaky.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-item">
+                        <span class="audio-label">OpenAI TTS Output</span>
+                        <audio controls>
+                            <source src="assets/audio/LFM_responses/openai_output_creaky.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
