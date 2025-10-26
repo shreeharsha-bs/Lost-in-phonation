@@ -226,9 +226,40 @@
         html {
             scroll-behavior: smooth;
         }
+
+        .audio-error {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
+    <script>
+        // Debug audio loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const audioElements = document.querySelectorAll('audio');
+            console.log('Found ' + audioElements.length + ' audio elements');
+            
+            audioElements.forEach(function(audio, index) {
+                const source = audio.querySelector('source');
+                console.log('Audio ' + index + ' source:', source.src);
+                
+                audio.addEventListener('error', function(e) {
+                    console.error('Audio load error for:', source.src);
+                    const errorMsg = document.createElement('p');
+                    errorMsg.className = 'audio-error';
+                    errorMsg.textContent = '⚠️ Audio file not found or cannot be loaded';
+                    audio.parentNode.appendChild(errorMsg);
+                }, true);
+                
+                audio.addEventListener('loadeddata', function() {
+                    console.log('Audio loaded successfully:', source.src);
+                });
+            });
+        });
+    </script>
     <div class="container">
         <h1>Lost in Phonation</h1>
         
