@@ -233,6 +233,62 @@
             margin-top: 10px;
             font-style: italic;
         }
+
+        .button-group {
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #ff6b6b;
+            border: 2px solid #ff6b6b;
+        }
+
+        .btn-secondary:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .audio-pair-triple {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 968px) {
+            .audio-pair-triple {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -264,7 +320,12 @@
         <h1>Lost in Phonation</h1>
         
         <div class="subtitle">
-            Voice Quality Benchmark for TTS Evaluation (LREC 2026)
+            Voice Quality Benchmark for Speech Foundation Models (LREC 2026)
+        </div>
+
+        <div class="button-group">
+            <a href="#" class="btn btn-primary" onclick="alert('Paper link will be added after publication'); return false;">📄 Read Paper</a>
+            <a href="#" class="btn btn-secondary" onclick="alert('Dataset link will be added soon'); return false;">💾 Download Dataset</a>
         </div>
 
         <hr>
@@ -272,19 +333,19 @@
         <h2>Abstract</h2>
         
         <div class="abstract">
-            <em>[Abstract will be added here once finalized for LREC 2026 submission]</em>
+            Recent advances in speech foundation models (SFMs) have enabled the direct processing of spoken language from raw audio, bypassing intermediate textual representations. This capability allows SFMs to be exposed to, and potentially respond to, rich paralinguistic variations embedded in the input speech signal. One under-explored dimension of paralinguistic variation is voice quality, encompassing phonation types such as creaky and breathy voice. These phonation types are known to influence how listeners infer affective state, stance and social meaning in speech. Existing benchmarks for speech understanding largely rely on multiple-choice question answering (MCQA) formats, which are prone to failure and therefore unreliable in capturing the nuanced ways paralinguistic features influence model behaviour. In this paper, we probe SFMs through open-ended generation tasks and speech emotion recognition, evaluating whether model behaviours are consistent across different phonation inputs. We introduce a new parallel dataset featuring synthesized modifications to voice quality, designed to evaluate SFM responses to creaky and breathy voice. Our work provides the first examination of SFM sensitivity to these particular non-lexical aspects of speech perception.
         </div>
 
         <hr>
 
         <h2>🎧 Audio Examples</h2>
         
-        <p class="section-description">Comparing input prompts with TTS model outputs across different voice qualities</p>
+        <p class="section-description">Comparing input prompts with speech foundation model outputs across different voice qualities</p>
 
         <div class="audio-grid">
             <div class="audio-example">
                 <h3>Modal Voice - Career Advice</h3>
-                <div class="audio-pair">
+                <div class="audio-pair-triple">
                     <div class="audio-item">
                         <span class="audio-label">Input Prompt</span>
                         <audio controls>
@@ -293,9 +354,16 @@
                         </audio>
                     </div>
                     <div class="audio-item">
-                        <span class="audio-label">OpenAI TTS Output</span>
+                        <span class="audio-label">OpenAI Response</span>
                         <audio controls>
                             <source src="assets/audio/LFM_responses/openai_output_modal.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-item">
+                        <span class="audio-label">LFM Response</span>
+                        <audio controls>
+                            <source src="assets/audio/LFM_responses/p239_03_career_modal_transcript.wav" type="audio/wav">
                             Your browser does not support the audio element.
                         </audio>
                     </div>
@@ -304,7 +372,7 @@
 
             <div class="audio-example">
                 <h3>Breathy Voice - Career Advice</h3>
-                <div class="audio-pair">
+                <div class="audio-pair-triple">
                     <div class="audio-item">
                         <span class="audio-label">Input Prompt</span>
                         <audio controls>
@@ -313,9 +381,16 @@
                         </audio>
                     </div>
                     <div class="audio-item">
-                        <span class="audio-label">OpenAI TTS Output</span>
+                        <span class="audio-label">OpenAI Response</span>
                         <audio controls>
                             <source src="assets/audio/LFM_responses/openai_output_breathy.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-item">
+                        <span class="audio-label">LFM Response</span>
+                        <audio controls>
+                            <source src="assets/audio/LFM_responses/p239_03_career_modal_transcript.wav" type="audio/wav">
                             Your browser does not support the audio element.
                         </audio>
                     </div>
@@ -324,7 +399,7 @@
 
             <div class="audio-example">
                 <h3>Creaky Voice - Career Advice</h3>
-                <div class="audio-pair">
+                <div class="audio-pair-triple">
                     <div class="audio-item">
                         <span class="audio-label">Input Prompt</span>
                         <audio controls>
@@ -333,9 +408,16 @@
                         </audio>
                     </div>
                     <div class="audio-item">
-                        <span class="audio-label">OpenAI TTS Output</span>
+                        <span class="audio-label">OpenAI Response</span>
                         <audio controls>
                             <source src="assets/audio/LFM_responses/openai_output_creaky.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-item">
+                        <span class="audio-label">LFM Response</span>
+                        <audio controls>
+                            <source src="assets/audio/LFM_responses/p239_03_career_modal_transcript.wav" type="audio/wav">
                             Your browser does not support the audio element.
                         </audio>
                     </div>
