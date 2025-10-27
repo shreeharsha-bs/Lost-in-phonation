@@ -6,6 +6,6 @@ This repository hosts the project website for **Lost in Phonation**, a comprehen
 
 ## 🌐 Live Website
 
-Visit the live website at: [https://anonymous.4open.science/w/Lost-in-phonation-65B9/](https://anonymous.4open.science/w/Lost-in-phonation-65B9/)
+Visit the live website at: https://anonymous.4open.science/w/Lost-in-phonation-65B9/
 
 ## Full VQ-bench will be made available soon
