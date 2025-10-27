@@ -2,7 +2,7 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://anonymous.4open.science/w/Lost-in-phonation-65B9/)
 
-This repository hosts the project website for **Lost in Phonation**, a comprehensive benchmark for evaluating voice quality in modern speech synthesis systems.
+This repository hosts the project website for **Lost in Phonation**, a comprehensive benchmark for evaluating voice quality in modern speech foundation models.
 
 ## 🌐 Live Website
 
