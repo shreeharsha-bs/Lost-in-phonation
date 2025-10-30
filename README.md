@@ -7,11 +7,8 @@ This repository hosts the project website for **Lost in Phonation**, a comprehen
 
 ## 🌐 Live Website
 
-Visit the live website at: <https://anonymous.4open.science/w/Lost-in-phonation-65B9/>
+Visit the live website at: https://anonymous.4open.science/w/Lost-in-phonation-65B9/
 
-## 📄 Paper
-
-Read the full paper on arXiv: <https://arxiv.org/abs/2510.25577>
 
 ## 💾 Dataset
 
