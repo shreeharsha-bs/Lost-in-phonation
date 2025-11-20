@@ -1,32 +1,38 @@
-# VQ-Bench Dataset Download Instructions
+# VQ-Bench Dataset
 
-The VQ-Bench dataset is split into multiple parts due to GitHub's file size limits.
+The VQ-Bench dataset is hosted on Zenodo for long-term preservation and to provide a citable DOI.
 
 ## Download
 
-Download all parts from the [Releases page](https://github.com/shreeharsha-bs/Lost-in-phonation/releases):
-- `VQ-Bench.zip.partaa` (2.0 GB)
-- `VQ-Bench.zip.partab` (522 MB)
+Visit the Zenodo repository to download the dataset:
 
-## Reassemble the Dataset
+**[Download VQ-Bench from Zenodo](https://doi.org/10.5281/zenodo.17662700)**
 
-### On macOS/Linux:
-```bash
-cat VQ-Bench.zip.part* > VQ-Bench.zip
-unzip VQ-Bench.zip
+The dataset is provided as a single ZIP file (approximately 2.5 GB).
+
+## Citation
+
+If you use this dataset in your research, please cite:
+
+```bibtex
+@article{lameris2025lost,
+  title={Lost in Phonation: Voice Quality Variation as an Evaluation Dimension for Speech Foundation Models},
+  author={Lameris, Harm and Bokkahalli Satish, Shree Harsha and Gustafson, Joakim and Székely, Éva},
+  journal={arXiv preprint arXiv:2510.25577},
+  year={2025}
+}
 ```
 
-### On Windows (PowerShell):
-```powershell
-cmd /c copy /b VQ-Bench.zip.partaa+VQ-Bench.zip.partab VQ-Bench.zip
+## Dataset Structure
+
+After extracting, you will find the following structure:
+
+```
+VQ-Bench/
+├── modified_modal/
+├── modified_breathy/
+├── modified_creaky/
+└── modified_end_creak/
 ```
 
-Then extract with your preferred zip tool.
-
-## Verify the Download (Optional)
-
-After reassembling, verify the file integrity:
-```bash
-# The combined file should be approximately 2.5 GB
-ls -lh VQ-Bench.zip
-```
+Each directory contains audio files organized by speaker and scenario.
